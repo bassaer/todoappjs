@@ -22,12 +22,12 @@ export class TodoListModel extends EventEmitter {
         this.emit("change");
     }
 
-    addTodo(todoItem) {
+    add(todoItem) {
         this.items.push(todoItem);
         this.emitChange();
     }
 
-    updateTodo({ id, completed }) {
+    update({ id, completed }) {
         const todoItem = this.items.find(todo => todo.id === id);
         if (!todoItem) {
             return;
@@ -36,7 +36,7 @@ export class TodoListModel extends EventEmitter {
         this.emitChange();
     }
 
-    deleteTodo({ id }) {
+    delete({ id }) {
         this.items = this.items.filter(todo => {
             return todo.id !== id;
         });
